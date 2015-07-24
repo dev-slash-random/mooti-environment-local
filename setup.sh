@@ -19,12 +19,37 @@ for i in "${SERVICES[@]}"
     fi
 done
 
+# Clone support repos
+APPS=(
+    'xizlr-core'
+)
+
+for i in "${APPS[@]}"
+    do
+    if [ ! -d apps/$i ]; then
+        git clone git@github.com:mooti/$i.git ./apps/$i
+    else
+    	cd ./apps/$i
+    	git pull
+    	cd ../..
+    fi
+done
+
 # Start Vagrant
-vagrant up
+(vagrant status | grep running) || 
+	vagrant up --provision
+
+(vagrant status | grep poweroff) || 
+	vagrant provision
+
 #vagrant provision
 
-#vagrant ssh -c "cd /apps/mooti-service && bundle install"
-#vagrant ssh -c "cd /apps/mooti-api && ./bin/vbox-init"
-#vagrant ssh -c "cd /apps/mooti-marketing && ./bin/vbox-init"
+for i in "${SERVICES[@]}"
+    do
+    vagrant ssh -c "cd /vagrant/apps/services/$i.service.dev.mooti.com && composer install"
+done
 
-#vagrant ssh -c "sudo /etc/init.d/apache2 restart"
+for i in "${APPS[@]}"
+    do
+    vagrant ssh -c "cd /vagrant/apps/$i && composer install"
+done
