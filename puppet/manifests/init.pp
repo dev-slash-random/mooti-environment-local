@@ -29,4 +29,4 @@ file { '/etc/mooti':
   ensure => 'directory',
 }
 
-include apache, php, npm, install-mysql, composer, mooti-web-services
+include apache, php, npm, install-mysql, composer, mooti-web-modules

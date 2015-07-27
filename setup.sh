@@ -1,19 +1,19 @@
 #!/bin/bash
 
 mkdir -p ./apps
-mkdir -p ./apps/services
+mkdir -p ./apps/modules
 
-# Clone the services
-SERVICES=(
+# Clone the modules
+MODULES=(
     'account'
 )
 
-for i in "${SERVICES[@]}"
+for i in "${MODULES[@]}"
     do
-    if [ ! -d apps/services/$i.service.dev.mooti.com ]; then
-        git clone git@github.com:mooti/mooti-service-$i.git ./apps/services/$i.service.dev.mooti.com
+    if [ ! -d apps/modules/$i.module.dev.mooti.com ]; then
+        git clone git@github.com:mooti/mooti-module-$i.git ./apps/modules/$i.module.dev.mooti.com
     else
-    	cd ./apps/services/$i.service.dev.mooti.com
+    	cd ./apps/modules/$i.module.dev.mooti.com
     	git pull
     	cd ../../..
     fi
@@ -44,9 +44,9 @@ done
 
 #vagrant provision
 
-for i in "${SERVICES[@]}"
+for i in "${MODULES[@]}"
     do
-    vagrant ssh -c "cd /vagrant/apps/services/$i.service.dev.mooti.com && composer install"
+    vagrant ssh -c "cd /vagrant/apps/modules/$i.module.dev.mooti.com && composer install"
 done
 
 for i in "${APPS[@]}"
