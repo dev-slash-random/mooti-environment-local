@@ -10,12 +10,12 @@ MODULES=(
 
 for i in "${MODULES[@]}"
     do
-    if [ ! -d apps/modules/$i.module.dev.mooti.com ]; then
-        git clone git@github.com:mooti/mooti-module-$i.git ./apps/modules/$i.module.dev.mooti.com
+    if [ ! -d apps/modules/$i.module.dev.mooti.io ]; then
+        git clone git@github.com:mooti/mooti-module-$i.git ./apps/modules/$i.module.dev.mooti.io
     else
-    	cd ./apps/modules/$i.module.dev.mooti.com
-    	git pull
-    	cd ../../..
+        cd ./apps/modules/$i.module.dev.mooti.io
+        git pull
+        cd ../../..
     fi
 done
 
@@ -35,18 +35,16 @@ for i in "${APPS[@]}"
     fi
 done
 
-# Start Vagrant
+# Start/Provision Vagrant
 (vagrant status | grep running) || 
 	vagrant up --provision
 
 (vagrant status | grep poweroff) || 
 	vagrant provision
 
-#vagrant provision
-
 for i in "${MODULES[@]}"
     do
-    vagrant ssh -c "cd /vagrant/apps/modules/$i.module.dev.mooti.com && composer install"
+    vagrant ssh -c "cd /vagrant/apps/modules/$i.module.dev.mooti.io && composer install"
 done
 
 for i in "${APPS[@]}"
