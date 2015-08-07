@@ -41,14 +41,4 @@ class apache {
         require => Package['apache2'],
         notify  => Service["apache2"]
     }
-
-    # Add a hosts file
-    file { 'vagrant-etc-hosts':
-        path => '/etc/hosts',
-        ensure => file,
-        group => 'root',
-        owner => 'root',
-        mode => '0644',
-        source => 'puppet:///modules/apache/hosts',
-    }
 }

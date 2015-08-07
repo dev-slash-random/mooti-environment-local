@@ -20,6 +20,7 @@ class mooti-web-modules {
         ensure => file,
         require => Package['apache2'],
         source => 'puppet:///modules/mooti-web-modules/module.mooti.apache.conf',
+        notify => Service['apache2']
     }
 
     # Symlink our vhost in sites-enabled to enable it
