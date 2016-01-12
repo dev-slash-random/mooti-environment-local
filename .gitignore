@@ -1,2 +1,3 @@
-.vagrant
-apps
+/infrastructure/vagrant/.vagrant
+/vendor/
+/bin/vendor/
