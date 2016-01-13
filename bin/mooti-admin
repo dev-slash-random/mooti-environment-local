@@ -1,12 +1,31 @@
 #!/usr/bin/env php
 <?php
-// application.php
 
-require __DIR__.'/../vendor/autoload.php';
+$autoloadLocations = [
+	__DIR__ . '/../../../autoload.php',
+	__DIR__ . '/../../autoload.php',
+	__DIR__ . '/../vendor/autoload.php',
+	__DIR__ . '/vendor/autoload.php'
+];
+
+$found = false;
+foreach ($autoloadLocations as $autoloadLocation) {
+    if (file_exists($autoloadLocation)) {
+        require_once $autoloadLocation;
+        $found = true;
+        break;
+    }
+}
+
+if(!$found) {
+	fwrite(STDERR, PHP_EOL.'cannot find autoload file'.PHP_EOL.PHP_EOL);
+}
 
 use Mooti\Console\Command\AddRepositoryCommand;
 use Symfony\Component\Console\Application;
 
+$mootiConfig = dirname($autoloadLocation).'/../mooti.json';
+
 $application = new Application();
-$application->add(new AddRepositoryCommand());
+$application->add(new AddRepositoryCommand($mootiConfig));
 $application->run();

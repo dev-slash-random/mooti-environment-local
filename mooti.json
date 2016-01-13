@@ -1,0 +1,18 @@
+{
+    "domain" : "mooti.io",
+    "repositories": [
+        "modules" : [{
+                "name" : "account",
+                "url"  : "git@github.com:mooti/mooti-module-account.git"
+            }
+        ],
+        "apps" : [{
+                "name" : "status",
+                "url"  : "git@github.com:mooti/mooti-app-status.git"
+            }
+        ],
+        "infrastructure" : {
+            "url" : "git@github.com:mooti/mooti-infrastructure.git"
+        }
+    ],
+}
