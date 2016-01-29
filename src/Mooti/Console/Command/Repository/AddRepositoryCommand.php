@@ -1,5 +1,5 @@
 <?php
-namespace Mooti\Console\Command;
+namespace Mooti\Console\Command\Repository;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;

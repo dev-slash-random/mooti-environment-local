@@ -8,7 +8,9 @@
     },
     "require": {
         "icanboogie/inflector": "^1.4",
-        "symfony/console": "^3.0"
+        "symfony/console": "^3.0",
+        "vierbergenlars/php-semver": "^3.0",
+        "mooti/xizlr-testable": "^0.0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "5.0.*"

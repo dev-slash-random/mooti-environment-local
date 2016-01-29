@@ -27,7 +27,7 @@ use Symfony\Component\Console\Application;
 
 $mootiConfig = dirname($autoloadLocation).'/../mooti.json';
 
-$application = new Application();
+$application = new Application('Mooti Admin', '0.0.1');
 $application->add(new AddRepositoryCommand($mootiConfig));
 $application->add(new InitialiseSystemCommand($mootiConfig));
 $application->run();
