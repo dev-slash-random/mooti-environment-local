@@ -20,9 +20,9 @@ class UpdateRepositoryCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $curDir = getcwd();
-        $mootiFilePath = $curDir.'/moot.json';
+        $mootiFilePath = $curDir.'/mooti.json';
 
-        if (file_exists($mootiFilePath) != false) {
+        if (file_exists($mootiFilePath) == false) {
             throw new \Exception("Error Processing Request", 1);
         }
 
@@ -30,9 +30,9 @@ class UpdateRepositoryCommand extends Command
 
         $mootiConfig = json_decode($contents);
 
-        mkdir($curDir.'/repositories/services', null, true);
-        mkdir($curDir.'/repositories/apps', null, true);
-        mkdir($curDir.'/repositories/infrastructure', null, true);
+        mkdir($curDir.'/repositories/services', 0775, true);
+        mkdir($curDir.'/repositories/apps', 0775, true);
+        mkdir($curDir.'/repositories/infrastructure', 0775, true);
 
         $output->writeln('hello');
 
