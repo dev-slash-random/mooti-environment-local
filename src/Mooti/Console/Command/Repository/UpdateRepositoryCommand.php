@@ -28,13 +28,38 @@ class UpdateRepositoryCommand extends Command
 
         $contents = file_get_contents($mootiFilePath);
 
-        $mootiConfig = json_decode($contents);
+        $mootiConfig = json_decode($contents, true);
 
-        mkdir($curDir.'/repositories/services', 0775, true);
-        mkdir($curDir.'/repositories/apps', 0775, true);
-        mkdir($curDir.'/repositories/infrastructure', 0775, true);
+        $servicesPath       = $curDir.'/repositories/services';
+        $appsPath           = $curDir.'/repositories/apps';
 
-        $output->writeln('hello');
+        if (!file_exists($servicesPath)) {
+            mkdir($servicesPath, 0775, true);
+        }
+        if (!file_exists($appsPath)) {
+            mkdir($appsPath, 0775, true);
+        }
 
+        foreach ($mootiConfig['repositories']['services'] as $service) {
+            $repoPath = $servicesPath.'/'.$service['name'];
+            if (!file_exists($repoPath)) {
+                shell_exec('git clone '.$service['url'].' '.$repoPath);
+            }
+            chdir($repoPath);
+            shell_exec('git pull');
+        }
+        chdir($curDir);
+
+        foreach ($mootiConfig['repositories']['apps'] as $app) {
+            $repoPath = $appsPath.'/'.$app['name'];
+            if (!file_exists($repoPath)) {
+                shell_exec('git clone '.$app['url'].' '.$repoPath);
+            }
+            chdir($repoPath);
+            shell_exec('git pull');
+        }
+        chdir($curDir);
+
+        $output->writeln('done');
     }
 }
