@@ -19,5 +19,5 @@
     "config": {
         "bin-dir": "bin/vendor"
     },
-    "bin": ["bin/mooti-admin"]
+    "bin": ["bin/mooti-admin", "bin/vagrant", "bin/vagrant-setup"]
 }

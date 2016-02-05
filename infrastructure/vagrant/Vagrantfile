@@ -14,15 +14,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus   = 1
   end
 
+  synced_folder=ENV['SYNCED_FOLDER'] || "./"  
+
+  config.vm.synced_folder synced_folder, "/vagrant"
+
   config.vm.provision :shell do |shell|
     shell.inline = "
         mkdir -p /etc/puppet/modules;
         (puppet module list | grep puppetlabs-mysql) ||
-          puppet module install puppetlabs/mysql
-        apt-get update && apt-get install -y python-software-properties;
-        (ls /etc/apt/sources.list.d/ | grep brightbox-ruby-ng-trusty.list) || 
-          apt-add-repository -y ppa:ondrej/php5-5.6;
-        apt-get update;
+          puppet module install puppetlabs/mysql;        
+        (ls /etc/apt/sources.list.d/ | grep ondrej-php-trusty.list) || 
+          apt-add-repository -y ppa:ondrej/php && apt-get update;
       "
   end
 

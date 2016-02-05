@@ -1,23 +1,22 @@
 # puppet/modules/php/manifests/init.pp
 class php {
-
-    package { ['libapache2-mod-php5', 'php5-cli', 'php5-dev']:
-        ensure => '5.6.*',
+ 
+    package { ['php7.0', 'libapache2-mod-php7.0', 'php7.0-cli', 'php-dev']:
         require => Exec['apt-get update'],
     }
 
-    package { ['php5-curl', 'php-pear', 'php5-mysqlnd', 'php5-mcrypt']:
+    package { ['php7.0-curl', 'php-pear', 'php7.0-mysql', 'php7.0-mcrypt']:
         ensure => present,
-        require => Package['libapache2-mod-php5'],
+        require => Package['php7.0'],
     }
 
     exec { "enable-php-mod-mcrypt" :
-        command => "/usr/sbin/php5enmod mcrypt",
-        unless => "/bin/readlink -e /etc/php5/cli/conf.d/20-mcrypt.ini",
+        command => "/usr/sbin/phpenmod mcrypt",
+        unless => "/bin/readlink -e /etc/php/7.0/cli/conf.d/20-mcrypt.ini",
         notify => Service['apache2'],
         require => [
             Package['apache2-utils'],
-            Package['php5-mcrypt']
+            Package['php7.0-mcrypt']
         ]
     }
 }

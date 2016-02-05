@@ -1,0 +1,13 @@
+#!/bin/bash
+
+BINDIR=$(/usr/bin/dirname $0);
+export VAGRANT_CWD=$(/bin/bash -c "(cd $BINDIR/../vendor/mooti/mooti/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../vendor/mooti/mooti/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../infrastructure/vagrant/ 2> /dev/null && /bin/pwd)");
+
+export SYNCED_FOLDER=$(/bin/bash -c "(cd $BINDIR/../repositories/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../repositories/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../test/repositories/ 2> /dev/null && /bin/pwd)");
+
+# Start/Provision Vagrant
+(vagrant status | grep running) || 
+	vagrant up --provision
+
+#(vagrant status | grep poweroff) || 
+	vagrant provision
