@@ -4,7 +4,7 @@
     "type": "project",
     "description": "LAMP based ecosystem",
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": { "Mooti\\Base\\Core\\": "src/" }
     },
     "require": {
         "php": ">=5.5.9",
