@@ -21,7 +21,7 @@ if(!$found) {
 	fwrite(STDERR, PHP_EOL.'cannot find autoload file'.PHP_EOL.PHP_EOL);
 }
 
-use Mooti\Console\Command\Repository\UpdateRepositoryCommand;
+use Mooti\Base\Core\Command\Repository\UpdateRepositoryCommand;
 use Symfony\Component\Console\Application;
 
 $application = new Application('Mooti Admin', '0.0');
