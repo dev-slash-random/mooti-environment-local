@@ -41,7 +41,7 @@ class UpdateRepositoryCommand extends Command
         }
 
         foreach ($mootiConfig['repositories']['services'] as $service) {
-            $repoPath = $servicesPath.'/'.$service['name'];
+            $repoPath = $servicesPath.'/'.$service['name'].'.service.dev.mooti.local';;
             if (!file_exists($repoPath)) {
                 shell_exec('git clone '.$service['url'].' '.$repoPath);
             }
