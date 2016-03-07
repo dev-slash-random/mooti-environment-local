@@ -25,5 +25,5 @@ file { '/etc/mooti':
   ensure => 'directory',
 }
 
-include dns, apache, php, mooti
-# install-mysql, composer
+include dns, apache, php, composer, mooti
+# install-mysql, 
