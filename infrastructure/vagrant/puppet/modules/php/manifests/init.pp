@@ -19,4 +19,14 @@ class php {
             Package['php7.0-mcrypt']
         ]
     }
+
+    exec { "enable-mod-vhost-alias" :
+        command => "/usr/sbin/a2enmod php7.0",
+        unless => "/bin/readlink -e /etc/apache2/mods-enabled/php7.0.load",
+        notify => Service['apache2'],
+        require => [
+            Package['apache2-utils'],
+            Package['libapache2-mod-php7.0']
+        ]
+    }
 }
