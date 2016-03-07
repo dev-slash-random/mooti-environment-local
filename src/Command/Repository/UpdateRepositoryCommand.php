@@ -6,6 +6,8 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Mooti\Xizlr\Core\Xizlr;
+use Mooti\Base\Core\FileSystem;
+use Mooti\Base\Core\Git;
 
 class UpdateRepositoryCommand extends Command
 {
@@ -19,46 +21,50 @@ class UpdateRepositoryCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $curDir = getcwd();
+        $fileSystem = $this->createNew(FileSystem::class);
+        $git        = $this->createNew(Git::class);
+
+        $curDir = $fileSystem->getCurrentWorkingDirectory();
+
         $mootiFilePath = $curDir.'/mooti.json';
 
-        if (file_exists($mootiFilePath) == false) {
-            throw new \Exception("Error Processing Request", 1);
-        }
-
-        $contents = file_get_contents($mootiFilePath);
+        $contents = $fileSystem->fileGetContents($mootiFilePath);
 
         $mootiConfig = json_decode($contents, true);
+
+        if (!$mootiConfig) {
+            throw new MalformedDataException('The contents of '.$mootiFilePath.' are not valid json');
+        }
 
         $servicesPath       = $curDir.'/repositories/services';
         $appsPath           = $curDir.'/repositories/apps';
 
-        if (!file_exists($servicesPath)) {
-            mkdir($servicesPath, 0775, true);
+        if (!$fileSystem->fileExists($servicesPath)) {
+            $fileSystem->createDirectory($servicesPath);
         }
-        if (!file_exists($appsPath)) {
-            mkdir($appsPath, 0775, true);
+        if (!$fileSystem->fileExists($appsPath)) {
+            $fileSystem->createDirectory($appsPath);
         }
 
         foreach ($mootiConfig['repositories']['services'] as $service) {
             $repoPath = $servicesPath.'/'.$service['name'];
-            if (!file_exists($repoPath)) {
-                shell_exec('git clone '.$service['url'].' '.$repoPath);
+            if (!$fileSystem->fileExists($repoPath)) {
+                $git->cloneRepo($service['url'], $repoPath);
             }
-            chdir($repoPath);
-            shell_exec('git pull');
+            $fileSystem->changeDirectory($repoPath);
+            $git->pull();
         }
-        chdir($curDir);
+        $fileSystem->changeDirectory($curDir);
 
         foreach ($mootiConfig['repositories']['apps'] as $app) {
             $repoPath = $appsPath.'/'.$app['name'];
             if (!file_exists($repoPath)) {
-                shell_exec('git clone '.$app['url'].' '.$repoPath);
+                $git->cloneRepo($app['url'], $repoPath);
             }
-            chdir($repoPath);
-            shell_exec('git pull');
+            $fileSystem->changeDirectory($repoPath);
+            $git->pull();
         }
-        chdir($curDir);
+        $fileSystem->changeDirectory($curDir);
 
         $output->writeln('done');
     }
