@@ -20,7 +20,7 @@ class php {
         ]
     }
 
-    exec { "enable-mod-vhost-alias" :
+    exec { "enable-apache-mod-php7" :
         command => "/usr/sbin/a2enmod php7.0",
         unless => "/bin/readlink -e /etc/apache2/mods-enabled/php7.0.load",
         notify => Service['apache2'],
