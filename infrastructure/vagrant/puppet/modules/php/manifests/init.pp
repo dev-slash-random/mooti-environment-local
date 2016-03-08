@@ -5,7 +5,7 @@ class php {
         require => Exec['apt-get update'],
     }
 
-    package { ['php7.0-curl', 'php-pear', 'php7.0-mysql', 'php7.0-mcrypt']:
+    package { ['php7.0-curl', 'php-pear', 'php7.0-mysql', 'php7.0-mcrypt', 'php7.0-mbstring']:
         ensure => present,
         require => Package['php7.0'],
     }
@@ -17,6 +17,16 @@ class php {
         require => [
             Package['apache2-utils'],
             Package['php7.0-mcrypt']
+        ]
+    }
+
+    exec { "enable-php-mod-mbstring" :
+        command => "/usr/sbin/phpenmod mbstring",
+        unless => "/bin/readlink -e /etc/php/7.0/cli/conf.d/20-mbstring.ini",
+        notify => Service['apache2'],
+        require => [
+            Package['apache2-utils'],
+            Package['php7.0-mbstring']
         ]
     }
 
