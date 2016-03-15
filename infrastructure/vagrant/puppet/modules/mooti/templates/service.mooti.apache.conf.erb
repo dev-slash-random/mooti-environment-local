@@ -8,6 +8,7 @@
 
     ServerName dev.mooti.local
     ServerAlias *.service.dev.mooti.local
+    ServerAlias *.service.dev.<%= @apache_domain %>
     
     DocumentRoot /vagrant/services
     VirtualDocumentRoot /vagrant/services/%0/public
@@ -17,6 +18,6 @@
     RewriteRule ^(.*)$ /%{HTTP_HOST}/public/index.php [QSA,L]
 
     LogLevel info
-    ErrorLog /var/log/apache2/dev.mooti.local.log
+    ErrorLog /var/log/apache2/dev.mooti.local.error.log
 
-</VirtualHost>
+</VirtualHost>  

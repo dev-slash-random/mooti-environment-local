@@ -2,7 +2,7 @@
 class install-mysql {
 
     class { '::mysql::server':
-        root_password => 'mooti3465Xi'
+        root_password => $root_db_password
     }
 
     # Install the mysql-server

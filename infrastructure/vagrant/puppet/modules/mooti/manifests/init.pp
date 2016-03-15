@@ -6,7 +6,7 @@ class mooti {
         path => '/etc/mooti/config.ini',
         ensure => file,
         require => File['/etc/mooti'],
-        source => 'puppet:///modules/mooti/config.ini',
+        content => template('mooti/config.ini.erb'),
     }
 
     # Add a vhost template
@@ -14,7 +14,7 @@ class mooti {
         path => '/etc/apache2/sites-available/service.dev.mooti.local.conf',
         ensure => file,
         require => Package['apache2'],
-        source => 'puppet:///modules/mooti/service.mooti.apache.conf',
+        content => template('mooti/service.mooti.apache.conf.erb'),
         notify => Service['apache2']
     }
 

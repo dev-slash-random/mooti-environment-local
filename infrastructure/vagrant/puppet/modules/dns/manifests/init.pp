@@ -21,7 +21,7 @@ class dns {
         group => 'root',
         owner => 'root',
         mode => '0644',
-        source => 'puppet:///modules/dns/dnsmasq.conf',
+        content => template('dns/dnsmasq.conf.erb'),        
         require => Package['dnsmasq'],
         notify  => Service['dnsmasq']
     }

@@ -4,6 +4,11 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+required_plugins = %w( vagrant-json-config )
+required_plugins.each do |plugin|
+  system "vagrant plugin install #{plugin}" unless Vagrant.has_plugin? plugin
+end
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = "ubuntu/trusty64"
@@ -14,6 +19,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus   = 1
   end
 
+  mooti_json=ENV['MOOTI_JSON'] || "mooti.json"
+  config.jsonconfig.load_json mooti_json, "config", true
+  config_apache_domain = config.jsonconfig.get "apache_domain";
+  config_root_db_password = config.jsonconfig.get "root_db_password";
+
   synced_folder=ENV['SYNCED_FOLDER'] || "./"  
 
   config.vm.synced_folder synced_folder, "/vagrant"
@@ -22,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     shell.inline = "
         mkdir -p /etc/puppet/modules;
         (puppet module list | grep puppetlabs-mysql) ||
-          puppet module install puppetlabs/mysql;        
+          puppet module install puppetlabs/mysql;
         (ls /etc/apt/sources.list.d/ | grep ondrej-php-trusty.list) || 
           apt-add-repository -y ppa:ondrej/php && apt-get update;
       "
@@ -34,6 +44,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     puppet.manifests_path = "puppet/manifests"
     puppet.manifest_file  = "init.pp"
     puppet.module_path = "puppet/modules"
+    puppet.facter = {
+      "apache_domain" => config_apache_domain      
+      "root_db_password" => config_root_db_password
+    }
   end
 
 end

@@ -1,5 +1,8 @@
 {
-    "domain" : "mooti.io",
+    "config" : {
+        "apache_domain" : "mooti.io",
+        "root_db_password" : "mooti3465Xi",
+    },
     "repositories" : {
         "services" : [{
                 "name" : "account",
