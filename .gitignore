@@ -2,3 +2,4 @@
 /vendor/
 /bin/vendor/
 /tests/functional/repositories/
+/build/

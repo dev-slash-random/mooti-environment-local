@@ -3,16 +3,17 @@
         "apache_domain" : "mooti.io",
         "root_db_password" : "mooti3465Xi",
     },
-    "repositories" : {
-        "services" : [{
-                "name" : "account",
-                "url"  : "git@github.com:mooti/mooti-service-account.git"
-            }
-        ],
-        "apps" : [{
-                "name" : "status",
-                "url"  : "git@github.com:mooti/mooti-app-status.git"
-            }
-        ]
+    "repositories" : [{
+            "name"    : "account",
+            "url"     : "git@github.com:mooti/mooti-service-account.git",
+            "type"    : "mooti-service",
+            "alias_domains" : [
+                "api.accoount.mooti.io"
+            ]
+        }, {
+            "name" : "core",
+            "url"  : "git@github.com:mooti/mooti-database-core.git",
+            "type" : "mooti-database"
+        }
     }   
 }

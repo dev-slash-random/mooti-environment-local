@@ -4,7 +4,7 @@
     "type": "project",
     "description": "LAMP based ecosystem",
     "autoload": {
-        "psr-4": { "Mooti\\Base\\Core\\": "src/" }
+        "psr-4": { "Mooti\\System\\Base\\": "src/" }
     },
     "require": {
         "php": ">=5.5.9",
@@ -19,5 +19,9 @@
     "config": {
         "bin-dir": "bin/vendor"
     },
-    "bin": ["bin/mooti-admin", "bin/vagrant", "bin/vagrant-setup"]
+    "bin": [
+        "bin/mooti-admin",
+        "bin/vagrant",
+        "bin/vagrant-setup"
+    ]
 }

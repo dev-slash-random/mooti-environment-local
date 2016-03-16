@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   synced_folder=ENV['SYNCED_FOLDER'] || "./"  
 
-  config.vm.synced_folder synced_folder, "/vagrant"
+  config.vm.synced_folder synced_folder, "/repositories"
 
   config.vm.provision :shell do |shell|
     shell.inline = "

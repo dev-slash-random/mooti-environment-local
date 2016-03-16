@@ -1,9 +1,10 @@
 <?php
-namespace Mooti\Base\Core;
-    
+namespace Mooti\Base\Core\Util;
+
+use Mooti\Base\Core\Exception\FileSystemException;
+
 class FileSystem
 {
-
     public function getCurrentWorkingDirectory()
     {
         return getcwd();
@@ -17,9 +18,18 @@ class FileSystem
     public function fileGetContents($filePath)
     {
         if ($this->fileExists($filePath) == false) {
-            throw new FileNotFoundException('File '.$filePath.' was not found', 1);
+            throw new FileSystemException('File '.$filePath.' was not found');
         }
         return file_get_contents($filePath);
+    }
+
+    public function filePutContents($filePath, $data)
+    {
+        $bytesWritten = file_put_contents($filePath, $data);
+        if ($bytesWritten === false) {
+            throw new FileSystemException('File '.$filePath.' could not be written');
+        }
+        return true;
     }
 
     public function createDirectory($directoryPath)

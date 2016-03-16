@@ -7,17 +7,19 @@
 <VirtualHost *:80>
 
     ServerName dev.mooti.local
-    ServerAlias *.service.dev.mooti.local
-    ServerAlias *.service.dev.<%= @apache_domain %>
+    ServerAlias *.mooti-service.dev.local
+    ServerAlias *.mooti-service.dev.<%= @apache_domain %>
     
-    DocumentRoot /vagrant/services
-    VirtualDocumentRoot /vagrant/services/%0/public
+    account.mooti-service.dev.generate4schools.co.uk
+
+    DocumentRoot /repositories/mooti/services
+    VirtualDocumentRoot /repositories/mooti/services/%1/public
 
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^(.*)$ /%{HTTP_HOST}/public/index.php [QSA,L]
 
     LogLevel info
-    ErrorLog /var/log/apache2/dev.mooti.local.error.log
+    ErrorLog /var/log/apache2/mooti.dev.local.error.log
 
-</VirtualHost>  
+</VirtualHost>
