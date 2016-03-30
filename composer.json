@@ -6,6 +6,9 @@
     "autoload": {
         "psr-4": { "Mooti\\System\\Base\\": "src/" }
     },
+    "autoload-dev": {
+        "psr-4": {"Mooti\\Test\\Unit\\System\\Base\\": "tests/unit"}
+    },
     "require": {
         "php": ">=5.5.9",
         "icanboogie/inflector": "^1.4",
@@ -16,6 +19,7 @@
         "phpunit/phpunit": "5.1.*",
         "satooshi/php-coveralls": "dev-master"
     },
+
     "config": {
         "bin-dir": "bin/vendor"
     },
