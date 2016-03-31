@@ -7,7 +7,7 @@
  * @author       Ken Lalobo <ken@mooti.io>
  */
 
-namespace Mooti\System\Base\Util;
+namespace Mooti\Platform\Util;
     
 class Git
 {

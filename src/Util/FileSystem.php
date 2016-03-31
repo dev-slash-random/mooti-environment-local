@@ -7,9 +7,9 @@
  * @author       Ken Lalobo <ken@mooti.io>
  */
 
-namespace Mooti\System\Base\Util;
+namespace Mooti\Platform\Util;
 
-use Mooti\System\Base\Exception\FileSystemException;
+use Mooti\Platform\Exception\FileSystemException;
 
 class FileSystem
 {

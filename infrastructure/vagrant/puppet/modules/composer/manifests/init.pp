@@ -21,14 +21,4 @@ class composer{
       owner  => 'vagrant',
       group  => 'vagrant'
     }
-
-    file { 'composer-auth-json':
-        path => '/home/vagrant/.composer/auth.json',
-        ensure => file,
-        require => File['/home/vagrant/.composer'],
-        source => 'puppet:///modules/composer/auth.json',
-        owner  => 'vagrant',
-        group  => 'vagrant',
-        mode   => 600
-    }
 }
