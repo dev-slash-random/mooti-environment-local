@@ -1,5 +1,5 @@
 {
-    "name": "mooti/mooti",
+    "name": "mooti/platform",
     "license": "Apache-2.0",
     "type": "project",
     "description": "LAMP based ecosystem",
@@ -10,7 +10,7 @@
         "php": ">=5.5.9",
         "icanboogie/inflector": "^1.4",
         "symfony/console": "^3.0",
-        "mooti/xizlr-core": "1.0.*"
+        "mooti/framework": "^0.0.2"
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
