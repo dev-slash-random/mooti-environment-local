@@ -26,7 +26,7 @@
         "bin-dir": "bin/vendor"
     },
     "bin": [
-        "bin/mooti-admin",
+        "bin/mooti-platform",
         "bin/vagrant",
         "bin/vagrant-setup"
     ]
