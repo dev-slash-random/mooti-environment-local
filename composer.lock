@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e5d5dc6723bc64fbfea13a3892a623c7",
-    "content-hash": "8dab0db7d96a714b9309f7d7d4608a46",
+    "hash": "20aa444c1ac764ab2698a6ca6b4a265c",
+    "content-hash": "54d91636d195023d230059fb77c8d8f5",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -330,6 +330,73 @@
             "time": "2016-04-22 09:50:56"
         },
         {
+            "name": "mooti/testable",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mooti/testable.git",
+                "reference": "b601787c6f3776a0a880a08e3b92a57df17186b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mooti/testable/zipball/b601787c6f3776a0a880a08e3b92a57df17186b4",
+                "reference": "b601787c6f3776a0a880a08e3b92a57df17186b4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.1.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mooti\\Testable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "time": "2016-04-13 16:22:44"
+        },
+        {
+            "name": "mooti/validator",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mooti/validator.git",
+                "reference": "a3e03367aedbc794da77dea1219855ea3ad0ea01"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mooti/validator/zipball/a3e03367aedbc794da77dea1219855ea3ad0ea01",
+                "reference": "a3e03367aedbc794da77dea1219855ea3ad0ea01",
+                "shasum": ""
+            },
+            "require": {
+                "mooti/testable": "^2.0",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.1.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mooti\\Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "time": "2016-04-20 09:04:03"
+        },
+        {
             "name": "nikic/fast-route",
             "version": "v0.8.0",
             "source": {
@@ -412,16 +479,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.0.3",
+            "version": "v3.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "2ed5e2706ce92313d120b8fe50d1063bcfd12e04"
+                "reference": "6b1175135bc2a74c08a28d89761272de8beed8cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/2ed5e2706ce92313d120b8fe50d1063bcfd12e04",
-                "reference": "2ed5e2706ce92313d120b8fe50d1063bcfd12e04",
+                "url": "https://api.github.com/repos/symfony/console/zipball/6b1175135bc2a74c08a28d89761272de8beed8cd",
+                "reference": "6b1175135bc2a74c08a28d89761272de8beed8cd",
                 "shasum": ""
             },
             "require": {
@@ -468,7 +535,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-02-28 16:24:34"
+            "time": "2016-03-16 17:00:50"
         },
         {
             "name": "symfony/http-foundation",
@@ -697,6 +764,55 @@
                 "shim"
             ],
             "time": "2016-01-20 09:13:37"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v3.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "e6f1f98bbd355d209a992bfff45e7edfbd4a0776"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e6f1f98bbd355d209a992bfff45e7edfbd4a0776",
+                "reference": "e6f1f98bbd355d209a992bfff45e7edfbd4a0776",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "https://symfony.com",
+            "time": "2016-03-30 10:41:14"
         }
     ],
     "packages-dev": [

@@ -2,15 +2,17 @@
 
 BINDIR=$(/usr/bin/dirname $0);
 
-export VAGRANT_CWD=$(/bin/bash -c "(cd $BINDIR/../vendor/mooti/mooti/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../vendor/mooti/mooti/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../infrastructure/vagrant/ 2> /dev/null && /bin/pwd)");
+export VAGRANT_CWD=$(/bin/bash -c "(cd $BINDIR/../vendor/mooti/platform/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../vendor/mooti/platform/infrastructure/vagrant/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../infrastructure/vagrant/ 2> /dev/null && /bin/pwd)");
 
-export SYNCED_FOLDER=$(/bin/bash -c "(cd $BINDIR/../repositories/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../repositories/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../tests/functional/repositories/ 2> /dev/null && /bin/pwd)");
+export SYNCED_FOLDER=$(/bin/bash -c "(cd $BINDIR/../synced-folder/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../../synced-folder/ 2> /dev/null && /bin/pwd) || (cd $BINDIR/../tests/functional/synced-folder/ 2> /dev/null && /bin/pwd)");
 
-export MOOTI_JSON=$(/bin/bash -c "ls $BINDIR/../mooti.json 2> /dev/null || ls $BINDIR/../../mooti.json 2> /dev/null || ls $BINDIR/../tests/functional/mooti.json  2> /dev/null");
+#export MOOTI_JSON=$(/bin/bash -c "ls $BINDIR/../platform.json 2> /dev/null || ls $BINDIR/../../platform.json 2> /dev/null || ls $BINDIR/../tests/functional/platform.json  2> /dev/null");
 
 # Start/Provision Vagrant
 (vagrant status | grep running) || 
 	vagrant up --provision
 
-#(vagrant status | grep poweroff) || 
+(vagrant status | grep poweroff) || 
 	vagrant provision
+
+#vagrant ssh -c "cd /vagrant/apps/$i && composer install"

@@ -1,16 +1,22 @@
 {
     "name": "mooti/platform",
+    "description": "LAMP based platform",
+    "keywords": ["platform", "infrastructure"],
     "license": "Apache-2.0",
     "type": "project",
-    "description": "LAMP based ecosystem",
     "autoload": {
-        "psr-4": { "Mooti\\Base\\Core\\": "src/" }
+        "psr-4": { "Mooti\\Platform\\": "src/" }
+    },
+    "autoload-dev": {
+        "psr-4": {"Mooti\\Test\\PHPUnit\\Platform\\": "tests/phpunit"}
     },
     "require": {
         "php": ">=5.5.9",
         "icanboogie/inflector": "^1.4",
         "symfony/console": "^3.0",
-        "mooti/framework": "^0.0.2"
+        "mooti/framework": "^0.0.2",
+        "mooti/validator": "^0.0.2",
+        "symfony/process": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
@@ -19,5 +25,9 @@
     "config": {
         "bin-dir": "bin/vendor"
     },
-    "bin": ["bin/mooti-admin", "bin/vagrant", "bin/vagrant-setup"]
+    "bin": [
+        "bin/mooti-admin",
+        "bin/vagrant",
+        "bin/vagrant-setup"
+    ]
 }

@@ -16,7 +16,7 @@ package { 'curl':
   ensure => present,
 }
 
-package { ['build-essential', 'libssl-dev', 'libv8-3.14-dev']:
+package { ['build-essential', 'libssl-dev', 'libv8-3.14-dev', 'zip', 'unzip']:
     ensure => present,
     require => Exec['apt-get update'],
 }
@@ -25,5 +25,5 @@ file { '/etc/mooti':
   ensure => 'directory',
 }
 
-include dns, apache, php, composer, mooti
+include dns, apache, php, composer
 # install-mysql, 

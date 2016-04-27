@@ -1,4 +1,5 @@
 /infrastructure/vagrant/.vagrant
 /vendor/
 /bin/vendor/
-/tests/functional/repositories/
+/tests/functional/
+/build/
