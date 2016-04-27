@@ -72,22 +72,39 @@ class UpdateAllRepositoriesCommand extends Command
                 $apacheConfigPath = $curDir.'/synced-folder/apache/sites-available/'.$severName.'.conf';
                 $fileSystem->filePutContents($apacheConfigPath, $apacheConfigContents);
 
-                $vagrantCommand = 'cd /mooti/repositories/'.$repository['name'];
-                $vagrantCommand .= ' && /usr/bin/composer install';
-                $vagrantCommand .= ' && sudo ln -s /mooti/apache/sites-available/'.$severName.'.conf /etc/apache2/sites-available/'.$severName.'.conf';
-                $vagrantCommand .= ' && sudo a2ensite '.$severName;
-                $vagrantCommand .= ' && sudo service apache2 restart';
+                $scriptsToRun = [];
+                if (isset($mootiConfigArray['scripts'])) {
+                    $scriptsToRun = $mootiConfigArray['scripts'];
+                }
 
-                $command = $curDir.'/../../bin/vagrant ssh -c "'.$vagrantCommand.'"';
-                $process = $this->createNew(Process::class, $command);
-                $process->setTimeout(3600);
-                $process->mustRun(function ($type, $buffer) use ($output) {
-                    $output->writeln(trim($buffer));
-                });
+                foreach ($scriptsToRun as $script) {
+                    $vagrantCommand = 'cd /mooti/repositories/'.$repository['name'].' && '.$script;
+                    $this->runVagrantCommand($curDir, $vagrantCommand, $output);
+                }
+
+                $vagrantCommand = 'sudo rm /etc/apache2/sites-available/'.$severName.'.conf && sudo ln -s /mooti/apache/sites-available/'.$severName.'.conf /etc/apache2/sites-available/'.$severName.'.conf';
+                $this->runVagrantCommand($curDir, $vagrantCommand, $output);
+
+                $vagrantCommand = 'sudo a2ensite '.$severName;
+                $this->runVagrantCommand($curDir, $vagrantCommand, $output);
+
+                $vagrantCommand = ' sudo service apache2 restart';
+                $this->runVagrantCommand($curDir, $vagrantCommand, $output);
             }
         }
         $fileSystem->changeDirectory($curDir);
 
         $output->writeln('done');
+    }
+
+    public function runVagrantCommand($curDir, $vagrantCommand, OutputInterface $output)
+    {
+        $command = $curDir.'/../../bin/vagrant ssh -c "'.$vagrantCommand.'"';
+        $output->writeln('Run command on devbox: '.$vagrantCommand);
+        $process = $this->createNew(Process::class, $command);
+        $process->setTimeout(3600);
+        $process->mustRun(function ($type, $buffer) use ($output) {
+            $output->writeln(trim($buffer));
+        });
     }
 }

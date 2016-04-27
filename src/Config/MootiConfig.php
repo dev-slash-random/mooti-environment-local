@@ -29,6 +29,15 @@ class MootiConfig extends AbstractConfig
                     'type'     => 'string'
                 ]
             ]
+        ],
+        'scripts' => [
+            'required' => false,
+            'type'     => 'array',
+            'items'    => [
+                '*' => [
+                    'type' => 'string'
+                ]                
+            ]
         ]
     ];
 
