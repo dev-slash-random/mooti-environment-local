@@ -73,6 +73,6 @@ abstract class AbstractConfig
         $filePath = $this->getFilepath();
         $this->validateConfig();
         $fileSystem = $this->createNew(FileSystem::class);
-        $fileSystem->filePutContents($filePath, json_encode($this->platformConfig, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+        $fileSystem->filePutContents($filePath, json_encode($this->config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 }
