@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "20aa444c1ac764ab2698a6ca6b4a265c",
-    "content-hash": "54d91636d195023d230059fb77c8d8f5",
+    "hash": "dad09385578b1caa380ef10d3674b56a",
+    "content-hash": "2001cbd58acad9929aea746413b19114",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -246,16 +246,16 @@
         },
         {
             "name": "mooti/factory",
-            "version": "0.0.2",
+            "version": "0.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mooti/factory.git",
-                "reference": "7447faa13c08f515a97fd51ed848362c790a53e5"
+                "reference": "13c611912c37cfdb4bf31d44a48551609526dc51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mooti/factory/zipball/7447faa13c08f515a97fd51ed848362c790a53e5",
-                "reference": "7447faa13c08f515a97fd51ed848362c790a53e5",
+                "url": "https://api.github.com/repos/mooti/factory/zipball/13c611912c37cfdb4bf31d44a48551609526dc51",
+                "reference": "13c611912c37cfdb4bf31d44a48551609526dc51",
                 "shasum": ""
             },
             "require": {
@@ -282,27 +282,27 @@
                 "testable",
                 "testing"
             ],
-            "time": "2016-04-20 10:41:41"
+            "time": "2016-04-27 08:28:37"
         },
         {
             "name": "mooti/framework",
-            "version": "0.0.2",
+            "version": "0.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mooti/framework.git",
-                "reference": "8d3ba1ac5e65c5cb8518e83ca7dfd7909d15e321"
+                "reference": "060fe6befdb1b24f5f4898996339961721f4f3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mooti/framework/zipball/8d3ba1ac5e65c5cb8518e83ca7dfd7909d15e321",
-                "reference": "8d3ba1ac5e65c5cb8518e83ca7dfd7909d15e321",
+                "url": "https://api.github.com/repos/mooti/framework/zipball/060fe6befdb1b24f5f4898996339961721f4f3d5",
+                "reference": "060fe6befdb1b24f5f4898996339961721f4f3d5",
                 "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "^1.1",
                 "icanboogie/inflector": "^1.3",
                 "league/route": "^1.2",
-                "mooti/factory": "^0.0.2",
+                "mooti/factory": "^0.0.3",
                 "php": ">=5.5.9",
                 "psr/log": "1.0.*@dev",
                 "symfony/console": "^3.0"
@@ -327,7 +327,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-04-22 09:50:56"
+            "time": "2016-04-27 12:34:23"
         },
         {
             "name": "mooti/testable",
