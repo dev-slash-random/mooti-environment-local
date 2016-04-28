@@ -1,9 +1,9 @@
 <VirtualHost *:80>
 
     ServerName {{server_name}}
-    DocumentRoot /mooti/repositories/{{repository_path}}/public
+    DocumentRoot /mooti/repositories/{{repository_web_root}}
 
-    <Directory /mooti/repositories/{{repository_path}}/public>
+    <Directory /mooti/repositories/{{repository_web_root}}>
         Require all granted
 
         Options Indexes FollowSymlinks
@@ -11,7 +11,7 @@
 
         RewriteEngine On
         RewriteCond %{REQUEST_FILENAME} !-f
-        RewriteRule ^(.*)$ {{document_root}} [QSA,L]
+        RewriteRule ^(.*)$ {{index_file}} [QSA,L]
     </Directory>
 
     LogLevel info

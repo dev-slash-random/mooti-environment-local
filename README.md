@@ -12,3 +12,11 @@ Local Vagrant box for Mooti
 
 
 composer require mooti/platform
+
+./bin/vendor/mooti-platform
+
+.gitignore
+
+/bin/vendor/
+/vendor/
+/synced-folder/

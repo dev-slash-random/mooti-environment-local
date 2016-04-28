@@ -63,10 +63,12 @@ class UpdateAllRepositoriesCommand extends Command
                 $templatePath = $templateDir.'/apache/'.$serverType.'.tpl';
                 $templateContents = $fileSystem->fileGetContents($templatePath);
                 $severName = $mootiConfigArray['name'].'.'.$config['config']['domain'];
+                $webRoot = $mootiConfigArray['server']['web_root'];
+                $repositoryWebRoot = $repository['name'] . (empty($webRoot) == false?'/'.$webRoot:'');
                 $data = [
-                    '{{server_name}}'     => $severName,
-                    '{{repository_path}}' => $repository['name'],
-                    '{{document_root}}'   => $mootiConfigArray['server']['document_root']
+                    '{{server_name}}'         => $severName,
+                    '{{repository_web_root}}' => $repositoryWebRoot,
+                    '{{index_file}}'          => $mootiConfigArray['server']['index_file']
                 ];
                 $apacheConfigContents = str_replace(array_keys($data), array_values($data), $templateContents);
                 $apacheConfigPath = $curDir.'/synced-folder/apache/sites-available/'.$severName.'.conf';

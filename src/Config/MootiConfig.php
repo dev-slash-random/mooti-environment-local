@@ -21,11 +21,15 @@ class MootiConfig extends AbstractConfig
             'type'     => 'object',
             'properties' => [
                 'type' => [
-                    'required' => 'true',
+                    'required' => true,
                     'type'     => 'string'
                 ],
-                'document_root' => [
-                    'required' => 'true',
+                'web_root' => [
+                    'required' => true,
+                    'type'     => 'string'
+                ],
+                'index_file' => [
+                    'required' => true,
                     'type'     => 'string'
                 ]
             ]
