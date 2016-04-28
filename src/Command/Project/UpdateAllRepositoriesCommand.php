@@ -82,7 +82,7 @@ class UpdateAllRepositoriesCommand extends Command
                     $this->runVagrantCommand($curDir, $vagrantCommand, $output);
                 }
 
-                $vagrantCommand = 'sudo rm /etc/apache2/sites-available/'.$severName.'.conf && sudo ln -s /mooti/apache/sites-available/'.$severName.'.conf /etc/apache2/sites-available/'.$severName.'.conf';
+                $vagrantCommand = 'sudo rm -f /etc/apache2/sites-available/'.$severName.'.conf && sudo ln -s /mooti/apache/sites-available/'.$severName.'.conf /etc/apache2/sites-available/'.$severName.'.conf';
                 $this->runVagrantCommand($curDir, $vagrantCommand, $output);
 
                 $vagrantCommand = 'sudo a2ensite '.$severName;
@@ -99,7 +99,8 @@ class UpdateAllRepositoriesCommand extends Command
 
     public function runVagrantCommand($curDir, $vagrantCommand, OutputInterface $output)
     {
-        $command = $curDir.'/../../bin/vagrant ssh -c "'.$vagrantCommand.'"';
+        $curDir = realpath(dirname($curDir.'/'.$_SERVER['argv'][0]));
+        $command = $curDir.'/vagrant ssh -c "'.$vagrantCommand.'"';
         $output->writeln('Run command on devbox: '.$vagrantCommand);
         $process = $this->createNew(Process::class, $command);
         $process->setTimeout(3600);
