@@ -4,8 +4,9 @@ namespace Mooti\Platform\Config;
 use Mooti\Platform\Util\FileSystem;
 use Mooti\Framework\Framework;
 use Mooti\Framework\ServiceProvider;
-use Mooti\Platform\Exception\DataValidationException;
+use Mooti\Framework\Exception\DataValidationException;
 use Mooti\Validator\Validator;
+use Mooti\Framework\Config\AbstractConfig;
 
 class MootiConfig extends AbstractConfig
 {
@@ -52,7 +53,7 @@ class MootiConfig extends AbstractConfig
 
     public function init()
     {
-        $this->config = [
+        $this->configData = [
             'name' => 'mooti.example'
         ];
     }

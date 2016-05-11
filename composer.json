@@ -8,22 +8,19 @@
         "psr-4": { "Mooti\\Platform\\": "src/" }
     },
     "autoload-dev": {
-        "psr-4": {"Mooti\\Test\\PHPUnit\\Platform\\": "tests/phpunit"}
+        "psr-4": {"Mooti\\Test\\PHPUnit\\Platform\\": "tests/phpunit/src"}
     },
     "require": {
         "php": ">=5.5.9",
         "icanboogie/inflector": "^1.4",
-        "symfony/console": "^3.0",
-        "mooti/validator": "^0.0.2",
+        "symfony/console": "^3.0",        
         "symfony/process": "^3.0",
-        "mooti/framework": "^0.0.4"
+        "mooti/validator": "^0.0.6",
+        "mooti/framework": "^0.0.8"
     },
     "require-dev": {
         "phpunit/phpunit": "5.1.*",
         "satooshi/php-coveralls": "dev-master"
-    },
-    "config": {
-        "bin-dir": "bin/vendor"
     },
     "bin": [
         "bin/mooti-platform",
