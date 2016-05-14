@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dad09385578b1caa380ef10d3674b56a",
-    "content-hash": "2001cbd58acad9929aea746413b19114",
+    "hash": "b3712c421d79a2376393b9ef030d7a24",
+    "content-hash": "e33a4cd2ebd68b4ad09bfefc6206e64f",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -246,16 +246,16 @@
         },
         {
             "name": "mooti/factory",
-            "version": "0.0.3",
+            "version": "0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mooti/factory.git",
-                "reference": "13c611912c37cfdb4bf31d44a48551609526dc51"
+                "reference": "c17f6ea2f0b8ce91899312cb40be4cfe568e05ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mooti/factory/zipball/13c611912c37cfdb4bf31d44a48551609526dc51",
-                "reference": "13c611912c37cfdb4bf31d44a48551609526dc51",
+                "url": "https://api.github.com/repos/mooti/factory/zipball/c17f6ea2f0b8ce91899312cb40be4cfe568e05ef",
+                "reference": "c17f6ea2f0b8ce91899312cb40be4cfe568e05ef",
                 "shasum": ""
             },
             "require": {
@@ -282,27 +282,28 @@
                 "testable",
                 "testing"
             ],
-            "time": "2016-04-27 08:28:37"
+            "time": "2016-05-12 09:06:05"
         },
         {
             "name": "mooti/framework",
-            "version": "0.0.4",
+            "version": "0.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mooti/framework.git",
-                "reference": "060fe6befdb1b24f5f4898996339961721f4f3d5"
+                "reference": "657d697423aca7dd5cce58b85d7b719189c5952a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mooti/framework/zipball/060fe6befdb1b24f5f4898996339961721f4f3d5",
-                "reference": "060fe6befdb1b24f5f4898996339961721f4f3d5",
+                "url": "https://api.github.com/repos/mooti/framework/zipball/657d697423aca7dd5cce58b85d7b719189c5952a",
+                "reference": "657d697423aca7dd5cce58b85d7b719189c5952a",
                 "shasum": ""
             },
             "require": {
                 "container-interop/container-interop": "^1.1",
                 "icanboogie/inflector": "^1.3",
                 "league/route": "^1.2",
-                "mooti/factory": "^0.0.3",
+                "mooti/factory": "^0.0.6",
+                "mooti/validator": "^0.0.6",
                 "php": ">=5.5.9",
                 "psr/log": "1.0.*@dev",
                 "symfony/console": "^3.0"
@@ -327,57 +328,24 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-04-27 12:34:23"
-        },
-        {
-            "name": "mooti/testable",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mooti/testable.git",
-                "reference": "b601787c6f3776a0a880a08e3b92a57df17186b4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mooti/testable/zipball/b601787c6f3776a0a880a08e3b92a57df17186b4",
-                "reference": "b601787c6f3776a0a880a08e3b92a57df17186b4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "5.1.*",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Mooti\\Testable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "time": "2016-04-13 16:22:44"
+            "time": "2016-05-12 09:21:46"
         },
         {
             "name": "mooti/validator",
-            "version": "0.0.2",
+            "version": "0.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mooti/validator.git",
-                "reference": "a3e03367aedbc794da77dea1219855ea3ad0ea01"
+                "reference": "0acd414dbc971fa68ef7b90b20558dcc71db13a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mooti/validator/zipball/a3e03367aedbc794da77dea1219855ea3ad0ea01",
-                "reference": "a3e03367aedbc794da77dea1219855ea3ad0ea01",
+                "url": "https://api.github.com/repos/mooti/validator/zipball/0acd414dbc971fa68ef7b90b20558dcc71db13a6",
+                "reference": "0acd414dbc971fa68ef7b90b20558dcc71db13a6",
                 "shasum": ""
             },
             "require": {
-                "mooti/testable": "^2.0",
+                "mooti/factory": "^0.0.6",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -394,7 +362,12 @@
             "license": [
                 "Apache-2.0"
             ],
-            "time": "2016-04-20 09:04:03"
+            "description": "PHP validator for json style data structures",
+            "keywords": [
+                "validation",
+                "validator"
+            ],
+            "time": "2016-05-12 09:11:18"
         },
         {
             "name": "nikic/fast-route",
@@ -539,16 +512,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v2.8.4",
+            "version": "v2.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "06d6b2c755b2f34ce21e688b62072e9c625709c4"
+                "reference": "ed9357bf86f041bd69a197742ee22c97989467d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/06d6b2c755b2f34ce21e688b62072e9c625709c4",
-                "reference": "06d6b2c755b2f34ce21e688b62072e9c625709c4",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/ed9357bf86f041bd69a197742ee22c97989467d7",
+                "reference": "ed9357bf86f041bd69a197742ee22c97989467d7",
                 "shasum": ""
             },
             "require": {
@@ -590,7 +563,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-27 12:57:53"
+            "time": "2016-04-05 16:36:54"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1043,16 +1016,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "e3abefcd7f106677fd352cd7c187d6c969aa9ddc"
+                "reference": "a8773992b362b58498eed24bf85005f363c34771"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/e3abefcd7f106677fd352cd7c187d6c969aa9ddc",
-                "reference": "e3abefcd7f106677fd352cd7c187d6c969aa9ddc",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/a8773992b362b58498eed24bf85005f363c34771",
+                "reference": "a8773992b362b58498eed24bf85005f363c34771",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1054,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2015-11-07 22:20:37"
+            "time": "2015-11-20 12:04:31"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1840,16 +1813,16 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "1.3.5",
+            "version": "1.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf"
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
-                "reference": "dc7a29032cf72b54f36dac15a1ca5b3a1b6029bf",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/2292b116f43c272ff4328083096114f84ea46a56",
+                "reference": "2292b116f43c272ff4328083096114f84ea46a56",
                 "shasum": ""
             },
             "require": {
@@ -1886,7 +1859,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2016-02-26 18:40:46"
+            "time": "2016-05-04 07:59:13"
         },
         {
             "name": "sebastian/exporter",
@@ -2137,16 +2110,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.0.4",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "980ee40c28f00acff8906c11b778aab5f0db74c2"
+                "reference": "24f155da1ff180df8e15e34a8f6e2f8a0eadefa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/980ee40c28f00acff8906c11b778aab5f0db74c2",
-                "reference": "980ee40c28f00acff8906c11b778aab5f0db74c2",
+                "url": "https://api.github.com/repos/symfony/config/zipball/24f155da1ff180df8e15e34a8f6e2f8a0eadefa8",
+                "reference": "24f155da1ff180df8e15e34a8f6e2f8a0eadefa8",
                 "shasum": ""
             },
             "require": {
@@ -2186,20 +2159,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-04 07:55:57"
+            "time": "2016-04-20 18:53:54"
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.0.4",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "f82499a459dcade2ea56df94cc58b19c8bde3d20"
+                "reference": "74fec3511b62cb934b64bce1d96f06fffa4beafd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/f82499a459dcade2ea56df94cc58b19c8bde3d20",
-                "reference": "f82499a459dcade2ea56df94cc58b19c8bde3d20",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/74fec3511b62cb934b64bce1d96f06fffa4beafd",
+                "reference": "74fec3511b62cb934b64bce1d96f06fffa4beafd",
                 "shasum": ""
             },
             "require": {
@@ -2235,11 +2208,11 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-03-27 10:24:39"
+            "time": "2016-04-12 18:09:53"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v3.0.4",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -2288,7 +2261,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.0.4",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

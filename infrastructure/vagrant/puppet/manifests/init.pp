@@ -21,9 +21,9 @@ package { ['build-essential', 'libssl-dev', 'libv8-3.14-dev', 'zip', 'unzip']:
     require => Exec['apt-get update'],
 }
 
-file { '/etc/mooti':
-  ensure => 'directory',
+file { 'etc-mooti':
+	path => '/etc/mooti',
+	ensure => 'directory',
 }
 
-include dns, apache, php, composer
-# install-mysql, 
+include mooti, dns, apache, php, composer, install-mysql

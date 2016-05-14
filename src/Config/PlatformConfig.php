@@ -4,8 +4,9 @@ namespace Mooti\Platform\Config;
 use Mooti\Platform\Util\FileSystem;
 use Mooti\Framework\Framework;
 use Mooti\Framework\ServiceProvider;
-use Mooti\Platform\Exception\DataValidationException;
+use Mooti\Framework\Exception\DataValidationException;
 use Mooti\Validator\Validator;
+use Mooti\Framework\Config\AbstractConfig;
 
 class PlatformConfig extends AbstractConfig
 {
@@ -60,7 +61,7 @@ class PlatformConfig extends AbstractConfig
 
     public function init()
     {
-        $this->config = [
+        $this->configData = [
             'config' => [ 
                 'domain'    => 'dev.local',
                 'db' => [
@@ -73,16 +74,16 @@ class PlatformConfig extends AbstractConfig
 
     public function addRepository($name, $url)
     {
-        if (isset($this->config) == false) {
+        if (isset($this->configData) == false) {
             throw new DataValidationException('Platform config has not been initialised');
         }
 
-        foreach ($this->config['repositories'] as $repository) {
+        foreach ($this->configData['repositories'] as $repository) {
             if ($name == $repository['name']) {
                 throw new DataValidationException('That repository already exists');
             }
         }
-        $this->config['repositories'][] = [
+        $this->configData['repositories'][] = [
             'name' => $name,
             'url'  => $url
         ];
@@ -90,16 +91,16 @@ class PlatformConfig extends AbstractConfig
 
     public function removeRepository($name)
     {
-        if (isset($this->config) == false) {
+        if (isset($this->configData) == false) {
             throw new DataValidationException('Platform config has not been initialised');
         }
 
         $newRepositoryList = [];
-        foreach ($this->config['repositories'] as $repository) {
+        foreach ($this->configData['repositories'] as $repository) {
             if ($name != $repository['name']) {
                 $newRepositoryList[] = $repository;
             }
         }
-        $this->config['repositories'] = $newRepositoryList;
+        $this->configData['repositories'] = $newRepositoryList;
     }
 }

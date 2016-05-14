@@ -8,8 +8,8 @@ use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Mooti\Framework\Framework;
 use Mooti\Platform\Config\PlatformConfig;
 use Mooti\Platform\Config\MootiConfig;
-use Mooti\Platform\Util\FileSystem;
-use Mooti\Platform\Util\Git;
+use Mooti\Framework\Util\FileSystem;
+use Mooti\Framework\Util\Git;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Process\Process;
 
@@ -35,7 +35,7 @@ class UpdateAllRepositoriesCommand extends Command
         
         $git = $this->createNew(Git::class);
 
-        $config = $platformConfig->getConfig();
+        $config = $platformConfig->getConfigData();
 
         $mootiConfig = $this->createNew(MootiConfig::class);
 
@@ -52,7 +52,17 @@ class UpdateAllRepositoriesCommand extends Command
 
             $mootiConfig->setDirPath($repositoryPath);
             $mootiConfig->open();
-            $mootiConfigArray = $mootiConfig->getConfig();
+            $mootiConfigArray = $mootiConfig->getConfigData();
+
+            $scriptsToRun = [];
+            if (isset($mootiConfigArray['scripts'])) {
+                $scriptsToRun = $mootiConfigArray['scripts'];
+            }
+
+            foreach ($scriptsToRun as $script) {
+                $vagrantCommand = 'cd /mooti/repositories/'.$repository['name'].' && '.$script;
+                $this->runVagrantCommand($curDir, $vagrantCommand, $output);
+            }
 
             if (isset($mootiConfigArray['server'])) {
                 $serverType = $mootiConfigArray['server']['type'];
@@ -74,17 +84,8 @@ class UpdateAllRepositoriesCommand extends Command
                 $apacheConfigPath = $curDir.'/synced-folder/apache/sites-available/'.$severName.'.conf';
                 $fileSystem->filePutContents($apacheConfigPath, $apacheConfigContents);
 
-                $scriptsToRun = [];
-                if (isset($mootiConfigArray['scripts'])) {
-                    $scriptsToRun = $mootiConfigArray['scripts'];
-                }
-
-                foreach ($scriptsToRun as $script) {
-                    $vagrantCommand = 'cd /mooti/repositories/'.$repository['name'].' && '.$script;
-                    $this->runVagrantCommand($curDir, $vagrantCommand, $output);
-                }
-
                 $vagrantCommand = 'sudo rm -f /etc/apache2/sites-available/'.$severName.'.conf && sudo ln -s /mooti/apache/sites-available/'.$severName.'.conf /etc/apache2/sites-available/'.$severName.'.conf';
+
                 $this->runVagrantCommand($curDir, $vagrantCommand, $output);
 
                 $vagrantCommand = 'sudo a2ensite '.$severName;
@@ -94,6 +95,7 @@ class UpdateAllRepositoriesCommand extends Command
                 $this->runVagrantCommand($curDir, $vagrantCommand, $output);
             }
         }
+
         $fileSystem->changeDirectory($curDir);
 
         $output->writeln('done');

@@ -7,7 +7,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 use Mooti\Framework\Framework;
 use Mooti\Platform\Config\PlatformConfig;
-use Mooti\Platform\Util\FileSystem;
+use Mooti\Framework\Util\FileSystem;
 use Symfony\Component\Console\Input\InputArgument;
 
 class AddRepositoryCommand extends Command

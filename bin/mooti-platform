@@ -21,7 +21,7 @@ if(!$found) {
 	fwrite(STDERR, PHP_EOL.'cannot find autoload file'.PHP_EOL.PHP_EOL);
 }
 
-use Mooti\Framework\Cli\Application;
+use Mooti\Framework\Application\Cli\Application;
 
 $commands = [
 	'Mooti\Platform\Command\Project\InitProjectCommand',
@@ -31,6 +31,6 @@ $commands = [
 ];
 
 $application = new Application($commands);
-$application->setName('Mooti Platform');
 $application->bootstrap();
+$application->setName('Mooti Platform');
 $application->run();
