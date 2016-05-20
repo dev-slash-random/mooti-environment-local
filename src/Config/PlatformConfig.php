@@ -20,16 +20,6 @@ class PlatformConfig extends AbstractConfig
                 'domain' => [
                     'required' => 'true',
                     'type'     => 'string'
-                ],
-                'db' => [
-                    'required' => 'true',
-                    'type'     => 'object',
-                    'properties' => [
-                        'password' => [
-                            'required' => 'true',
-                            'type'     => 'string'
-                        ]
-                    ]
                 ]
             ]
         ],
@@ -63,10 +53,7 @@ class PlatformConfig extends AbstractConfig
     {
         $this->configData = [
             'config' => [ 
-                'domain'    => 'dev.local',
-                'db' => [
-                    'password' => 'mooti3465Xi'
-                ]
+                'domain'    => 'dev.local'
             ],
             'repositories' => []
         ];
