@@ -1,4 +1,2 @@
-/infrastructure/vagrant/.vagrant
-/vendor/
-/tests/functional/
+/.vagrant/
 /build/

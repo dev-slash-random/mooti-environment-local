@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus   = 1
   end
 
-  synced_folder=ENV['SYNCED_FOLDER'] || "./"  
+  synced_folder="../project"
 
   config.vm.synced_folder synced_folder, "/mooti"
 

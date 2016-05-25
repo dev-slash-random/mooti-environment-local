@@ -5,7 +5,7 @@ class install-mysql {
         root_password => 'mooti3465Xi'
     }
 
-    # Install the mysql-server
+    # Install the mysql-client
     package { ['mysql-client-5.5']:
         ensure => present,
         require => Exec['apt-get update'],
