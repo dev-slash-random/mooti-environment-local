@@ -5,7 +5,7 @@ class php {
         require => Exec['apt-get update'],
     }
 
-    package { ['php7.0-curl', 'php-pear', 'php7.0-mysql', 'php7.0-mcrypt', 'php7.0-mbstring']:
+    package { ['php7.0-curl', 'php-pear', 'php7.0-mysql', 'php7.0-mcrypt', 'php7.0-mbstring', 'php-igbinary', 'php-redis', 'php-gearman']:
         ensure => present,
         require => Package['php7.0'],
     }
