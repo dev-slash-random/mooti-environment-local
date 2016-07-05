@@ -13,11 +13,11 @@ GIT_URL=`git config --get remote.origin.url`
 mkdir -p build
 cd build/
 rm -fr *
-git clone $GIT_URL repo
-cd repo/
+git clone $GIT_URL platform
+cd platform/
 VERSION=`git describe --abbrev=0 --tags`
 git checkout $VERSION
 echo $VERSION > version.txt
 rm -fr .git bin build tests .vagrant
 cd ..
-zip -r mooti-platform-$VERSION.zip repo/
+zip -r mooti-platform-$VERSION.zip platform/
