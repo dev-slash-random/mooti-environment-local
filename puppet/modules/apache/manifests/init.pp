@@ -43,13 +43,6 @@ class apache {
         require => Package['apache2-utils']
     }
 
-    exec { "enable-mod-vhost-alias" :
-        command => "/usr/sbin/a2enmod vhost_alias",
-        unless => "/bin/readlink -e /etc/apache2/mods-enabled/vhost_alias.load",
-        notify => Service['apache2'],
-        require => Package['apache2-utils']
-    }
-
     # Disable the default apache vhost
     file { 'default-apache-disable':
         path => '/etc/apache2/sites-enabled/000-default.conf',
