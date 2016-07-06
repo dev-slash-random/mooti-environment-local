@@ -25,7 +25,7 @@ class mooti {
     }
 
     exec { "install-mooti-admin":
-        command     => "/mooti/platform/puppet/modules/mooti/files/mooti-intsall.sh 0.0.3",
+        command     => "/mooti/platform/puppet/modules/mooti/files/mooti-intsall.sh 0.0.4",
         cwd         => "/opt/mooti/",
         require     => [
             Class['php'],
