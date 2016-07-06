@@ -1,4 +1,4 @@
-# -*- mode: ruby -*-
+  # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus   = 1
   end
 
-  synced_folder="../project"
+  synced_folder=".."
 
   config.vm.synced_folder synced_folder, "/mooti"
 
@@ -37,3 +37,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 end
+
